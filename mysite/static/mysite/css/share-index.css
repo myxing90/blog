@@ -1,0 +1,17 @@
+
+.share-box{ width:600px; height:1000px; margin:45px auto 0 auto;}
+	.share-name{ height:40px; line-height:40px; background-color:#bbb; color:#fff; letter-spacing:5px; font-size:20px; padding-left:10px;}
+	.share-list{ position:relative;}
+		.share-info{ border-bottom:#bbb solid 1px; margin-top:10px;}
+			.author-info{ width:80px; height:80px; margin:10px 0 0 10px; display:inline-block; text-align: center;}
+				.author-img{ margin:0 auto;}
+					.author-img img{ width:40px; height:40px; border-radius:50%;}
+				.author-name{ font-size: 15px;}
+				.share-num, .file-num{ font-size:14px; color:red; }
+			.file-info{ width:500px; float:right; margin-top:10px;}
+				.share-title-tag h4{ height:30px; line-height:30px; display: inline-block;}
+					.share-title-tag span{ float:right; margin-right: 30px; background-color:#ddd; font-size: 14px; padding: 2px 4px; border-radius: 5px;}
+				.share-desc{ min-height: 40px; font-size: 15px; }
+				.share-file{ height:30px; line-height:30px; width:500px; overflow: hidden; font-size: 15px}
+					.share-file span{ margin-right: 10px;}
+					.share-file a{ text-decoration: underline; color:blue;}

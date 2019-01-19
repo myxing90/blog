@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}分享{% endblock %}
+{% block css%}<link rel="stylesheet" href="{% static 'mysite/css/share-index.css' %}">{% endblock %}
+{% block content %}
+<div class="share-box">
+	<div class="share-name">分享</div>
+    <div class="share-list">
+    	{% for share in share_list %}
+    	<div class="share-info clearfix">
+        	<div class="author-info">
+            	<div class="author-img"><a href="{{ share.author.get_author_url }}"><img src="{{ share.author.user_img.url }}"></a></div>
+                <div class="author-name">{{ share.author.username }}</div>
+                <div class="share-num">{{ share.author.share_set.all.count }}次分享</div>
+                <!-- <div class="file-num">{#{}#}个文件</div> -->
+            </div>
+            <div class="file-info">
+        		<div class="share-title-tag">
+                    <h4 class="share-title" id="{{ share.share_title }}">{{ share.share_title }}</h4>
+                    {% for share_tag in share.share_tag.all %}
+                    <span class="share-tag">{{ share_tag.tag_name }}</span>
+                    {% endfor %}
+                </div>  
+                <div class="share-desc">{{ share.share_desc }}</div>
+                {% for share_file in share.share_file_set.all %}
+                <div class="share-file"><span>附件{{forloop.counter}}:</span><a class="share_url "href="{{ share_file.share_file.url }}">{{ share_file.get_file_name }}</a></div>
+                {% endfor %}
+        	</div>
+    	</div>
+        {% endfor %}
+	</div>
+</div>
+{% endblock %}

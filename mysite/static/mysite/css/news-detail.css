@@ -1,0 +1,35 @@
+.newsdetail-box{  width:1000px; margin:45px auto 10px auto;}
+	.newsdetail-news{ width:700px; float:left;}
+		.newsdetail-content{}
+			.newsdetail-top{}
+				.newsdetail-title{ height:60px; line-height:60px; text-align:center;}
+				.newsdetail-attach{ width:700px; display:inline-block; border-bottom:#bbb solid 1px;}
+					.newsdetail-from{ display:inline-block; margin:30px; text-decoration:underline;}
+                    .newsdetail-tag{ background-color: #ddd; font-size: 14px; padding: 2px 4px; border-radius: 4px; display:inline-block; margin-right:30px;}
+                    .newsdetail-time{ color:#888; display:inline-block;}
+                    .newsdetail-comment-top{ float:right; margin:30px;}
+					
+			.newsdetail-body{ margin-top: 20px; }
+			.newsdetail-body img{ width:400px; height:300px; margin:0 auto;}
+			.newsdetail-body p{ font-size:18px; text-indent:2em; line-height:180%; margin:15px; font-family:"微软雅黑", "宋体", serif;}
+		.newsdetail-comment{ margin-top:5px;}
+			form{ border:#1E8EE9 solid 1px; width:680px; margin:0 auto;}
+				.comment-text{ border:0;border-bottom:#bbb solid 1px; height:100px; width:680px; resize:none; display:block; padding:5px; outline:0; box-sizing:border-box;}
+				.log-submit{ height:40px;}
+					.comment_num{ line-height:40px; margin:0 30px 0 10px; color:#BBB}
+					.submit_btn,.log_btn a{ border:0px; float:right; display:inline-block; width:80px; height:30px; outline:0; background-color:#1E8EE9; letter-spacing:2px;
+						color:#fff; text-align:center; line-height:30px; font-size:16px; font-family:"微软雅黑", "宋体", serif; cursor:pointer; margin:5px;}
+					.username_form a{ line-height:40px; margin-right:30px; color:#1E8EE9;}
+				
+			.comment-list{ margin-top:20px;}
+				.comment-box{ border-bottom:#bbb solid 1px; min-height:80px;}
+					.comment-img img{ width:40px; height:40px; margin:10px; float:left; border-radius:20px;}
+					.comment-detail{ display:inline-block; width:600px;}
+						.comment-name-time{ height:20px; line-height:20px; font-size:14px; margin-top:10px; color:#888;}
+							.username,.time{ margin-right:20px;}
+						.comment-word{ margin:10px auto; font-size:14px;}
+			
+	.newsdetail-relative{ float:right; width:290px; }
+		.relative-news{ height:40px; line-height:40px; text-align:center; background-color: #bbb; color:#fff; font-size: 20px;}
+		.relative-list{}
+			.relative-list li{ height:40px; line-height: 40px; overflow: hidden;}

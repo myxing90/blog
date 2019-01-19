@@ -1,0 +1,24 @@
+.info-box{ width:1000px; border1: 1px solid red; margin: 50px auto 0 auto; min-height: 580px;}
+.pls_login{ border1: 1px solid red; text-align: center}
+
+.info-side{ width:200px; border: 1px solid grey; float: left; background-color: #fbfbfb; border-bottom: 0px;}
+
+.user-info{ width1: 200px; border1: 1px solid red;}
+    .side-title{ width: 200px; height: 40px; border-bottom: solid 1px grey; text-align: middle; font-size: 20px; 
+        line-height: 40px; text-align: center; background-color: #f3f3f3}
+    .user-main{ border1: solid 1px red;}
+        .user-img{ width: 70px; height: 70px; border1: solid 1px red; float: left; margin: 5px;}
+        .name-time{ width: 115px; height: 70px; border1: solid 1px red; float: right; margin-top: 5px;}
+            .user-name{ height: 35px; text-align: center; line-height: 35px; font-size: 14px;}
+            .login-time{ height: 35px; line-height: 35px; font-size: 12px;} 
+        .user-else{ height: 50px; border-bottom: 1px solid gray; margin-top: 5px;}
+
+.side-func{ width:200px; border1: 1px solid red;}
+    .write-blog, .manage-blog, .upload-file, .manage-upload{ height: 35px; line-height: 35px; border-bottom: solid grey 1px; padding-left: 10px;}
+
+.side-setting{ width: 200px; border1: 1px solid red;}
+    .common-info, .change-pw, .forget-pw, .change-email, .side-feedback{ height: 35px; line-height: 35px;
+        cursor: pointer; border-bottom: solid grey 1px; padding-left: 10px;}
+
+.info-main{ width:780px; height: 580px; border: 1px solid grey; float: right}
+    

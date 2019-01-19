@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}注册成功{% endblock %}
+{% block css%}<link rel="stylesheet" href="{% static 'user_admin/css/success_reg.css' %}">{% endblock %}
+{% block content %}
+<div class="success">
+<span>恭喜你</span>，<span class="username-success">{{username}}</span>，<span>注册成功！</span>
+<a href="{% url 'index' %}" class="to-index">点击返回首页</a> 
+</div>
+{% endblock %}
+
+

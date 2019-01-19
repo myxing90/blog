@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}登录{% endblock %}
+{% block css %}<link rel="stylesheet" type="text/css" href="{% static 'user_admin/css/login.css' %}">{% endblock %}
+
+{% block content %}
+<div class="register">
+    <div class="register-name">登  录</div>
+    <form method="post">
+    {% csrf_token %}
+    	<p class="label">{{ uf.username.label }}</p>
+    	{{ uf.username }}
+    	{{ uf.username.errors }}
+    	<p class="label">{{ uf.password.label }}</p>
+    	{{ uf.password }}
+    	{{ uf.password.errors }}
+    {% if is_login == False %}
+    <p class="is_login">用户名或密码错误</p>
+    {% endif %}
+    <input type="hidden" name="from_url" value="{{ request.META.HTTP_REFERER }}">
+    <input type="submit" value="登录" class="submit">
+	</form> 
+</div>
+{% endblock %}
+

@@ -1,0 +1,127 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block title %}首页{% endblock %} {% block tag %}
+<base target="_blank">{% endblock %} 
+{% block css%}<link rel="stylesheet" href="{% static 'mysite/css/index.css' %}">{% endblock %}
+{% block js %}<script type="text/javascript" src="{% static 'mysite/javascript/index.js' %}"></script>{% endblock %}
+{% block content %}
+<div class="body-box fixed-margin-top">
+    <div class="body-top clearfix">
+        <div class="body-nav">
+            <div class="nav-hot">
+                <ul class="hot-url-list">
+                    {% for top_url in top_url %}
+                    <li class="hot-url-info"><a href="{{ top_url.url }}" title="{{ top_url.name }}" style="background-image:url({{ top_url.logo.url }})">{{ top_url.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="nav-category">
+                {% for sort_tag in sort_tag %}
+                <div class="category-box">
+                    <span class="category-tag">{{ sort_tag }}</span>
+                    <ul class="category-url-list">
+                        {% for sort_url in sort_tag.sort_url_set.all|slice:":6" %}
+                        <li class="category-url-info"><a href="{{ sort_url.url }}" style="background-image:">{{ sort_url.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="body-side">
+            <div class="ppt" id="ppt">
+                <ul class="ppt-num" id="ppt-num">
+                    <li class="num active">•</li>
+                    <li class="num">•</li>
+                    <li class="num">•</li>
+                    <li class="num">•</li>
+                </ul>
+                <ul class="ppt-img" id="ppt-img">
+                    {% for blog_hot in blog_hot %}
+                    <li class="img"><a href="{{ blog_hot.get_blog_url }}"><img src="{{ blog_hot.main_img.url }}" alt="图片"></a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div>
+                <ul class="hot-blog-list">
+                    {% for blog_hot in blog_hot %}
+                    <li class="hot-blog"><a href="{{ blog_hot.get_blog_url }}" title="{{ blog_hot.title }}">{{ blog_hot.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="tag-list">
+                <div class="news-tag-list">
+                    <span class="tag-title">资讯标签</span> {% for news_tag in news_tag_list %}
+                    <a class="hot-news-tag" href="{{ news_tag.get_tag_url }}">{{ news_tag.name }}</a> {% endfor %}
+                </div>
+                <div class="blog-tag-list">
+                    <span class="tag-title">博客标签</span> {% for blog_tag in blog_tag_list %}
+                    <a class="hot-blog-tag" href="{{ blog_tag.get_tag_url }}">{{ blog_tag.name }}</a> {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="body-bottom clearfix">
+        <div class="news-blog">
+            <div class="news-list">
+                <div class="colum"><a href="{% url 'news-index' %}">资讯头条</a></div>
+                {% for news in news %}
+                <div class="news clearfix">
+                    <a href="{{ news.get_news_url }}" class="news-img"><img src="{{ news.main_img.url}}" alt="图片"></a>
+                    <div class="news-info">
+                        <a href="{{ news.get_news_url }}" title="{{ news.title }}">
+                            <h4 class="news-title">{{ news.title }}</h4>
+                        </a>
+                        <div class="news-sub">{#{{ news.get_news_abstract }}#}</div>
+                        <div class="news-attach1">
+                            {% for news_tag in news.news_tag.all %}
+                            <div class="news-tag"><a href="{{ news_tag.get_tag_url }}">{{ news_tag.name }}</a></div>
+                            {% endfor %}
+                        </div>
+                        <div class="news-attach2">
+                            <div class="published-time">{{ news.published_date |date:"n月j日 G:i"}}</div>
+                            <div class="comment-share"><a href="{{ news.get_news_url }}#newsdetail-comment">评论（{{ news.news_comment_set.all.count }}）</a></div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="blog-list">
+                <div class="colum"><a href="{% url 'blog-index' %}">博客排行</a></div>
+                {% for blog in blog %}
+                <div class="blog-info">
+                    {% if blog.main_img %}
+                    <div class="blog-info-img"><img src="{{ blog.main_img.url }}" alt=""></div>
+                    {% endif %}
+                    <div class="blog-title-abstract">
+                        <div class="blog-title-time">
+                            <a href="{{ blog.get_blog_url }}" class="blog-title">{{ blog.title }}</a>
+                            <span class="blog-time">{{ blog.published_date|date:"n月j日 G:i" }}</span>
+                        </div>
+                        <div class="blog-abstract">{{ blog.get_blog_abstract }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="share-list">
+            <div class="colum"><a href="{% url 'share-index' %}">热门分享</a></div>
+            {% for share in share %}
+            <div class="share-info">
+                <div class="share-author-title">
+                    <div class="author-img"><img src="{{share.author.user_img.url }}"></div>
+                    <div class="author-name">{{ share.author.username }}</div>
+                    <div class="share-title"><a href="{% url 'share-index' %}#{{share.share_title}}">{{ share.share_title }}</a></div>
+                </div>
+                <div class="share-desc">{{ share.share_desc }}</div>
+                {% for share_file in share.share_file_set.all %}
+                <div class="share-file"><a href="{% url 'share-index' %}#{{share.share_title}}">{{ share_file.get_file_name }}</a></div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

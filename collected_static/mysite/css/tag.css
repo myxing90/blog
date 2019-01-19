@@ -1,0 +1,11 @@
+.tagdetail-box{ margin:55px auto 0 auto; width:700px;}
+	.tag-name{ height:50px; background-color:#bbb; font-size:24px; line-height:50px; color:#fff; padding-left:10px;}
+		.tag-name span{ font-size:14px; margin-left:10px;}
+	.tagdetail-list{ min-height:700px;}
+		.tag-info{ height:100px; margin:10px; border-bottom:#ddd solid 1px;}
+			.tag-info-img{ float:left; margin-right:20px;}
+				.tag-info-img img{ width:150px; height:100px; display:block}
+			.tag-title-time{ height:40px; line-height:40px;}
+				.tag-title{ display:inline-block; width:350px; height:40px; overflow:hidden; vertical-align:middle; font-size:18px; font-weight:bold;}
+				.tag-time{ display:inline-block; vertical-align:middle; float:right; margin-right:10px; font-size: 14px; color:#888;}
+			.tag-abstract{ height:60px; overflow:hidden; line-height:200%; font-size:14px; color:#333;}

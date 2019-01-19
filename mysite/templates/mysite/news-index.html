@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}资讯{% endblock %}
+{% block css %}<link rel="stylesheet" href="{% static 'mysite/css/news-index.css' %}">{% endblock %}
+{% block js %}<script type="text/javascript" src="{% static 'mysite/javascript/news-index.js' %}"></script>{% endblock %}
+{% block content %}
+<div class="ni-box clearfix">
+	<div class="ni-news-box">
+    	<div class="ni-name">资 讯</div>
+        <div class="ni-list">
+        	{% for news in news %}
+        	<div class="ni-news clearfix">
+        		<a href="{{ news.get_news_url }}" class="ni-img"><img src="{{ news.main_img.url }}" alt="{{ news.title }}"></a>
+           		<div class="ni-info">
+            		<a href="{{ news.get_news_url }}" title="{{ news.title }}"><h2 class="ni-title">{{ news.title }}</h2></a>
+                	<div class="ni-sub">{{ news.get_news_abstract }}</div>
+                   	<div class="ni-attach1">
+                     	<div class="ni-from"><a href="{{ news.origin.url }}">{{ news.origin }}</a></div>
+                   		<div class="ni-update-time">{{ news.published_date|date:"n月j日 G:i" }}</div>
+                   	</div>
+                   	<div class="ni-attach2">
+                    	{% for news_tag in news.news_tag.all %}
+                      	<div class="ni-tag"><a href="{{ news_tag.get_tag_url }}">{{ news_tag.name }}</a></div>
+                        {% endfor %}
+                      	<div class="ni-comment-share"><a href="{{ news.get_news_url }}/#newsdetail-comment">评论({{ news.news_comment_set.all.count }})</a></div>
+                   	</div>
+           		</div>
+       		</div>
+          {% endfor %}
+          <div class="pagination" id="pagination">
+            {% if news.has_previous %}
+            <a href="?page={{ news.previous_page_number }}#pagination">上一页</a>
+            {% else %}
+            <a href="#pagination">上一页</a>
+            {% endif %}
+            <span class="current">
+                {{ news.number }}/{{ news.paginator.num_pages }}
+            </span>
+            {% if news.has_next %}
+                <a href="?page={{ news.next_page_number }}#pagination">下一页</a>
+            {% else %}
+            <a href="#pagination">下一页</a>
+            {% endif %}
+          </div>
+       	</div>
+   	</div>
+
+    <div class="ni-side">
+    	<div class="ni-rank">
+        	<div class="ni-rank-name" id="ni-rank-name"><a href="javascript:">今日排行</a><a href="javascript:">本周排行</a><a href="javascript:">所有标签</a></div>
+            <div class="ni-rank-day" id="ni-rank-day">
+            	<ul class="ni-day-list">
+                {% for news_list in news_list|slice:":10"  %}
+                	<li><a href="{{ news_list.get_news_url }}" title="{{ news_list.title }}">{{ news_list.title }}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+            
+			<div class="ni-rank-week" id="ni-rank-week">
+            	<ul class="ni-week-list">
+              {% for comment_num in comment_num %}
+                	<li><a href="{{ comment_num.get_news_url }}" title="{{ comment_num.title }}">{{ comment_num.title }}</a></li>
+              {% endfor %}
+              </ul>
+            </div>
+            
+            <div class="all-news-tag" id="all-news-tag">
+               {% for news_tag in news_tag %} 
+			         <a href="{{ news_tag.get_tag_url }}">{{ news_tag.name }}</a>
+               {% endfor %}
+            </div>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+.change-email-box{ width:500px; border: gray solid 1px;
+margin: 50px auto; }
+.title{ border-bottom: gray solid 1px; font-size: 20px; line-height: 50px; height: 50px; text-align: center;}
+.change-email-box p{ margin-bottom: 10px; height: 30px; line-height: 30px; margin-left: 10px;}
+.old-email{ height: 30px; line-height: 30px; margin-left: 10px;}
+label{ height: 30px; display: inline-block; vertical-align: middle;}
+.email-input{ height: 30px; width: 200px; border: gray solid 1px;}
+#yzm{ width: 140px;}
+.email-button{ width:60px; height: 32px;}
+.input-info{ color:red; font-size: 14px; height: 30px; display: inline-block; vertical-align: middle;}
+#email-submit{ width:100px; height: 30px; margin: 20px auto; display: block; color: #fff; background-color:#1E8EE9; border: none; cursor: pointer; font-size: 20px;
+    }

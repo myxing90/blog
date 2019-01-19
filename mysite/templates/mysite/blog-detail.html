@@ -1,0 +1,51 @@
+{% extends 'base.html' %} 
+{% load staticfiles %} 
+{% block title %}{{ blog.title }}{% endblock %}
+{% block css %}<link rel="stylesheet" href="{% static 'mysite/css/blog-detail.css' %}">{% endblock %}
+
+{% block content %}
+<div class="blogdetail-box">
+    <div class="blogdetail-top">
+        <div class="blogdetail-title">
+            <h1>{{ blog.title }}</h1>
+        </div>
+        <div class="blogdetail-author">
+            <img class="blogdetail-img" src="{{ blog.blog_author.get_img_url }}">
+            <div class="blogdetail-author-info">
+                <span class="author-name">{{ blog.blog_author.username }}</span>
+                <span class="published_time">{{ blog.published_date |date:"n月j日 G:i"}}</span>
+                <span class="blogdetail-comment"><a href="#blogdetail-comment">评论({{ blog.blog_comment_set.all|length }})</a></span>
+            </div>
+        </div>
+    </div>
+    <div class="blogdetail-bottom">
+        {{ blog.content | safe}}
+    </div>
+    <div class="blogdetail-comment" id="blogdetail-comment">
+        <form method="post">
+            {% for field in cf %} {% csrf_token %}
+            <div>{{field}}</div>
+            {% endfor %}
+
+            <div class="log-submit">
+                <span class="comment_num">{{ blog.blog_comment_set.all.count }}条评论</span> {% if session_username %}
+                <span class="username_form"><a href="{% url 'useradmin' %}">{{session_username}}</a></span>
+                <input type="submit" class="submit_btn" value="提交"> {% else %}
+                <span class="log_btn"><a href="{% url 'login' %}">登录</a></span> {% endif %}
+            </div>
+        </form>
+        <div class="comment-list">
+            {% for comment in blog.blog_comment_set.all %}
+            <div class="comment-box clearfix">
+                <a href="#" class="comment-img"><img src="{{ comment.comment.get_img_url }}" alt=""></a>
+                <div class="comment-detail">
+                    <div class="comment-name-time"><span class="username">{{ comment.comment }}</span><span class="time">{{ comment.comment_time|date:"n月j日 G:i"}}</span></div>
+                    <div class="comment-word">{{ comment.comment_text }}</div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

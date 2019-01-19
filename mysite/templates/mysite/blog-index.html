@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}博客{% endblock %}
+{% block css %}<link rel="stylesheet" href="{% static 'mysite/css/blog-index.css' %}">{% endblock %}
+
+{% block content %}
+<div class="blog">
+    <div class="blog-top">
+        <ul class="top-img" id="top-img">
+            <li class="img"><img src="{% static 'mysite/images/img/blog_main_img.jpg' %}"></li>
+        </ul>
+        <div class="every-day-words">任何事情都应该尝试一下，因为你无法知道<br>
+            什么样的人或者什么样的事将会改变你的一生<br>2018年5月1日</div>
+    </div>
+    <div class="blog-bottom clearfix">
+        <div class="blog-box">
+            <div class="tag-list">
+                {% for blog_tag in blog_tag %}
+                <a class="tag" href="{{ blog_tag.get_tag_url }}"><img src="{{ blog_tag.tag_img.url }}" alt="python"><span class="tag-name">{{ blog_tag.name }}</span></a>                {% endfor %}
+            </div>
+            <div class="blog-list">
+                {% for blog in blog %}
+                <div class="blog-info clearfix">
+                    {% if blog.main_img %}
+                    <div class="blog-main-img">
+                        <a href="{{ blog.get_blog_url }}"><img src="{{ blog.main_img.url }}" alt=""></a>
+                    </div>
+                    {% endif %}
+                    <div class="info-top">
+                        <div class="author-img"><a href="{{ blog.blog_author.get_author_url }}"><img src="{{ blog.blog_author.get_img_url }}"</a></div>
+                        <div class="author-name"><a href="{{ blog.blog_author.get_author_url }}">{{ blog.blog_author.username }}</a></div>
+                        <div class="published-time">{{ blog.published_date|date:"n月j日 G:i" }}</div>
+                        {% for blog_tag in blog.blog_tag.all %}
+                        <div class="blog-tag"><a href="{{ blog_tag.get_tag_url }}">{{ blog_tag.name }}</a></div>
+                        {% endfor %}
+                        <div class="blog-comment"><a href="{{ blog.get_blog_url}}#blogdetail-comment" style="background-image:url({% static 'mysite/images/icon/comment.png' %})">{{ blog.blog_comment_set.all.count }}</a></div>
+                    </div>
+                    <div class="blog-title-abstract">
+                        <div class="blog-title">
+                            <h4><a href="{{ blog.get_blog_url }}">{{ blog.title }}</a></h4>
+                        </div>
+                        <div class="blog-abstract">{{ blog.get_blog_abstract }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="pagination" id="pagination">
+                    {% if blog.has_previous %}
+                    <a href="?page={{ blog.previous_page_number }}#pagination">上一页</a> {% else %}
+                    <a href="#pagination">上一页</a> {% endif %}
+                    <span class="current">
+                        {{ blog.number }}/{{ blog.paginator.num_pages }}
+                    </span> {% if blog.has_next %}
+                    <a href="?page={{ blog.next_page_number }}#pagination">下一页</a> {% else %}
+                    <a href="#pagination">下一页</a> {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="blog-aside">
+            <div class="author-rank">
+                <div class="author-rank-title">推荐作者</div>
+                <ul class="author-rank-list">
+                    {% for blog_num in blog_num %}
+                    <li class="author-rank">
+                        <a class="author-rank-img" href="{{ blog_num.get_author_url }}"><img src="{{ blog_num.user_img.url }}" alt=""></a>
+                        <a class="author-rank-name" href="{{ blog_num.get_author_url }}">{{ blog_num.username }}<span>{{ blog_num.blog_num }}篇文章</span></a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="blog-rank">
+                <div class="blog-rank-title">博客排行</div>
+
+                <ul class="blog-rank-list">
+                    {% for comment_num in comment_num %}
+                    <li><a class="hot-blog" href="{{ comment_num.get_blog_url }}" style="background-image:url({% static 'mysite/images/icon/tuijian.png' %})">{{ comment_num.title }}<span>{{ comment_num.comment_num }}条评论</span></a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="time-rank">
+				<div class="time-rank-title">时间分类</div>
+                <ul class="time-rank-list">
+                    <li><a class="time-num" href="">...</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

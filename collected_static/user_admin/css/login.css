@@ -1,0 +1,12 @@
+
+body{ background-color:#ddd;}
+.register{ margin:200px auto; width:500px; background-color:#fff; border: 1px solid #fff;}
+.register-name{ font-size:26px; text-align:center; border-bottom:#BBB solid 1px; height:50px; line-height:50px;}
+form{ margin:0 auto; width:290px;}
+.label{ font-size:16px; display:inline-block; height:30px; width:70px; text-align:right; line-height:30px; vertical-align: middle;}
+#id_username,#id_password,#id_password_yz,#id_email{ display:inline-block; outline:0; width:200px; height:30px; border-radius:3px;
+	border:#bbb solid 1px; padding:2px 5px; margin-top: 15px;}
+.submit{ display:block; width:120px; height:40px; outline:none; cursor:pointer; background-color:#bbb; font-size:16px; margin:30px auto 20px auto; font-weight:bold;}
+.is_register,.is_login{ height:20px; line-height: 20px; font-size: 16px; text-align: center; color:red;}
+.errorlist{ font-size: 14px; color:red; text-align:center; }
+/*.tip{ font-size:14px; color:red; text-align: center}*/

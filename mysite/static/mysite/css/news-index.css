@@ -1,0 +1,33 @@
+
+.ni-box{ width:1030px; margin:45px auto 10px auto;}
+	.ni-news-box{ width:700px; float:left}
+		.ni-name{ height:40px; background-color:#BBB; line-height:40px; font-size:20px; color:#fff; font-family:"微软雅黑"; padding-left:10px;} 
+		.ni-list{ width:700px; float:left;}
+			.ni-news{ border-bottom:#bbb solid 1px;}
+			.ni-news:hover{ background-color:#fcfcfc}
+				.ni-img img{ width:280px; height:180px; margin:10px; float:left;}
+				.ni-info{ width:380px; height:180px; float:right; position:relative; margin:10px;}
+					.ni-title{ height:30px; line-height:30px; overflow:hidden; text-decoration:none;}
+					.ni-sub{ font-size:14px; line-height:1.5em; letter-spacing:1px; margin:10px 0; height:66px; overflow:hidden; color:#606a77;}
+					.ni-attach1{ width: 370px; font-size: 14px;}
+						.ni-from{ display:inline-block; text-decoration:underline;}
+						.ni-update-time{ float:right;}
+					.ni-attach2{ position:absolute; bottom:0px; left:0px; width:370px;}
+						.ni-tag{ display:inline-block;}
+							.ni-tag a{ display:inline-block; margin-right:10px; background-color:#BBB; border-radius:3px; padding:0 2px;;}
+						.ni-comment-share{ float:right;}	
+				.pagination{ margin:20px auto; width:200px; text-align: center; }
+					.current{ font-family:Verdana, Geneva, sans-serif;}
+			
+	.ni-side{ width:300px; float:right;}
+		.ni-rank{ height:500px; }
+			.ni-rank-name{ }
+				.ni-rank-name a{ display:inline-block; height:40px; border:#fcfcfc solid 1px; line-height:40px; width:100px; 
+		 				text-align:center; background-color:#bbb; box-sizing: border-box; color:#fff;}
+			.ni-rank-day{}
+				.ni-day-list li{ width:300px; height: 40px; line-height: 40px; overflow: hidden; border-bottom:#ddd solid 1px; font-size:15px;}
+			.ni-rank-week{ display:none;}
+				.ni-week-list li{ width:300px; height:40px; line-height:40px; border-bottom:#ddd solid 1px;font-size: 15px; overflow: hidden;}
+			.all-news-tag{ display:none;}
+				.all-news-tag a{ border-radius:5px; display:inline-block; height:30px; line-height:30px; 
+					background-color:#ddd; margin:8px; padding:0 5px;}

@@ -1,0 +1,31 @@
+{% extends 'useradmin_base.html' %}
+{% load static %}
+{% block title %}{{user.username}}的空间--修改邮箱{% endblock %}
+{% block useradmin_css %}
+<link rel="stylesheet" href="{% static 'user_admin/css/useradmin_change_email.css' %}">
+{% endblock %}
+
+{% block info-main %}
+    <form action="/useradmin/change_email/" method="post" class="change-email-box">
+        {% csrf_token %}
+        <div class="title">修改邮箱</div>
+        <div class="old-email">您的旧邮箱：{{user.email}}</div>
+        <p>
+            <label for="old-email-yz">验证旧邮箱</label>
+            <input type="email" id="old-email" class="email-input" name='old-email' required placeholder="请输入完整旧邮箱">
+            <span class="input-info"></span>
+        </p>
+        <p>
+            <label for="new-email">输入新邮箱</label>
+            <input type="email" minlength="10" id="new-email" class="email-input" name='new-email' required placeholder="请输入新邮箱">
+            <span class="input-info"></span>
+        </p>
+        <p><label for="yzm">输入验证码</label>
+            <input type="text" id="yzm" required class="email-input" name='yzm' required placeholder="请输入验证码"><input type='button' value="点击获取" class="email-button"></input>
+            <span class="input-info"></span>
+        </p>
+        <input type="button" value="更改" id="email-submit">
+    </form>
+
+<script src="{% static 'user_admin/javascript/change_email_jquery.js' %}"></script>
+{% endblock info-main %}

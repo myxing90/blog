@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{news_tag.name}}{{author_tag.username}}{{blog_tag.name}}__标签{% endblock %}
+{% block css %}<link rel="stylesheet" href="{% static 'mysite/css/tag.css' %}">{% endblock %}
+{% block content %}
+
+<div class="tagdetail-box">
+	<div class="tag-name">{{news_tag.name}}{{author_tag.username}}{{blog_tag.name}}<span>所有文章</span></div>
+    <div class="tagdetail-list">
+        {% if news_tag %}
+        
+        {% for each_news in news_tag.news_set.all %}
+        <div class="tag-info">
+        	<div class="tag-info-img"><img src="{{each_news.main_img.url}}" alt=""></div>
+            <div class="tag-title-abstract">
+            	<div class="tag-title-time">
+                <a href="{{ each_news.get_news_url }}" class="tag-title">{{each_news.title}}</a>
+                <span class="tag-time">{{ each_news.published_date|date:"n月j日 G:i"}}</span>
+                </div>
+                <div class="tag-abstract">{{each_news.get_news_abstract }}</div>
+            </div>  
+        </div>
+        {% endfor %}
+        
+        {% elif blog_tag %}
+        
+        {% for each_blog in blog_tag.blog_set.all %}
+		<div class="tag-info">
+        	{% if each_blog.main_img %}
+        	<div class="tag-info-img"><img src="{{each_blog.main_img.url}}" alt=""></div>
+            {% endif %}
+            <div class="tag-title-abstract">
+            	<div class="tag-title-time">
+                <a href="{{ each_blog.get_blog_url }}" class="tag-title">{{each_blog.title}}</a>
+                <span class="tag-time">{{ each_blog.published_date|date:"n月j日 G:i"}}</span>
+                </div>
+                <div class="tag-abstract">{{each_blog.get_blog_abstract }}</div>
+            </div>  
+        </div>
+        {% endfor %}
+        
+        {% else %}
+        
+        {% for each_author in author_tag.blog_set.all %}
+		<div class="tag-info">
+        	{% if each_author.main_img %}
+        	<div class="tag-info-img"><img src="{{each_author.main_img.url}}" alt=""></div>
+            {% endif %}
+            <div class="tag-title-abstract">
+            	<div class="tag-title-time">
+                <a href="{{ each_author.get_blog_url }}" class="tag-title">{{each_author.title}}</a>
+                <span class="tag-time">{{ each_author.published_date|date:"n月j日 G:i"}}</span>
+                </div>
+                <div class="tag-abstract">{{each_author.get_blog_abstract }}</div>
+            </div>  
+        </div>
+        {% endfor %}
+
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}

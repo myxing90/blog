@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block title %}注册{% endblock %} 
+{% block css %}<link rel="stylesheet" type="text/css" href="{% static 'user_admin/css/register.css' %}">{% endblock %}
+
+{% block content %}
+
+<div class="register">
+    <div class="register-name">注 册</div>
+    <form method="post">
+        {% csrf_token %}
+        <p class="label">{{ uf.username.label }}</p>
+        {{ uf.username }}                                   {# {{ uf.username.errors }} #}
+        <p class="label">{{ uf.password.label }}</p>
+        {{ uf.password }}                                   {# {{ uf.password.errors }} #}
+        <p class="label">{{ uf.password_yz.label }}</p>
+        {{ uf.password_yz }}                                {# {{ uf.password_yz.errors }}#}
+        <p class="label">{{ uf.email.label }}</p>
+        {{ uf.email }}                                      {# {{ uf.email.errors }}#} 
+        <!-- 下面三行代码是不用ajax验证用户名时的写法 -->
+        {# {% if is_register %} #} 
+        {# <p class="is_register">{{ username }}已经被注册了</p> #} 
+        {# {% endif %} #}
+        <input type="hidden" name="from_url" value="{{ request.MEAT.HTTP_REFERER }}">
+        <input type="submit" value="提 交" class="submit">
+    </form>
+</div>
+
+<script src="{% static 'user_admin/javascript/register_jquery.js' %}"></script>
+
+{% endblock %}

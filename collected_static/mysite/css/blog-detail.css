@@ -1,0 +1,29 @@
+body{ background-color:#fcfcfc;}
+.blogdetail-box{ width:700px; margin:60px auto 0 auto;}
+	.blogdetail-top{ border-bottom:#BBB solid 1px;}
+		.blogdetail-title{ text-align:center;}
+		.blogdetail-author{ width:600px; height:48px; margin:20px auto 10px auto;}
+		 	.blogdetail-img{ width:48px; height:48px; border-radius:50%; vertical-align:middle; margin-right:20px;}
+            .blogdetail-author-info{ display:inline-block; width:500px; vertical-align:middle;}
+			.author-name, .published_time, .blogdetail-comment{ font-size:14px; display:inline-block; margin:0 10px;}
+	.blogdetail-bottom{ margin-top:10px; text-indent:2em; overflow:hidden; width:700px; min-height:500px;}
+		.blogdetail-bottom p{ font-family:"微软雅黑", "宋体", serif; font-size:16px; margin:15px auto; line-height:180%;}
+		.blogdetail-bottom img{ display:block; margin:0 auto; width:500px; height:500px;}
+		.blogdetail-bottom pre{ font-family:"Courier New", Courier, monospace; font-size:14px; background-color:#DDD}
+
+		.blogdetail-comment{ margin-top:5px;}
+			form{ border:#1E8EE9 solid 1px; width:680px; margin:0 auto;}
+				.comment-text{ border:0;border-bottom:#bbb solid 1px; height:100px; width:680px; resize:none; display:block; padding:5px; outline:0; box-sizing:border-box;}
+				.log-submit{ height:40px;}
+					.comment_num{ line-height:40px; margin:0 30px 0 10px; color:#BBB}
+					.submit_btn,.log_btn a{ border:0px; float:right; display:inline-block; width:80px; height:30px; outline:0; background-color:#1E8EE9; letter-spacing:2px;
+						color:#fff; text-align:center; line-height:30px; font-size:16px; font-family:"微软雅黑", "宋体", serif; cursor:pointer; margin:5px;}
+					.username_form a{ line-height:40px; margin-right:30px; color:#1E8EE9;}
+				
+			.comment-list{ margin-top:20px;}
+				.comment-box{ border-bottom:#bbb solid 1px; min-height:80px;}
+					.comment-img img{ width:40px; height:40px; margin:10px; float:left; border-radius:20px;}
+					.comment-detail{ display:inline-block; width:600px;}
+						.comment-name-time{ height:20px; line-height:20px; font-size:14px; margin-top:10px; color:#888;}
+							.username,.time{ margin-right:20px;}
+						.comment-word{ margin:10px auto; font-size:14px;}

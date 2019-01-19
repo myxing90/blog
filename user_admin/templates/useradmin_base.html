@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block title %}用户空间{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'useradmin_base.css' %}">
+    {% block useradmin_css %}
+    {% endblock %}
+{% endblock %}
+
+{% block js %}
+<script type="text/javascrpt" src="{% static 'useradmin_base.js' %}"></script>
+    {% block useradmin_js %}
+    {% endblock %}
+{% endblock %} 
+
+{% block useradmin_css1 %}{% endblock %}{% comment %}不能在二级继承中新建独立继承,
+必须放在已有的继承内，如上{% endcomment %}
+
+{% block content %}
+<div class="info-box clearfix">
+    {% if session_username %}
+        <div class="info-side">
+            <div class="user-info">
+                <div class="side-title">用户信息</div>
+                <div class="user-main clearfix">
+                    <div class="user-img"><img src="{{ user.user_img.url }}" alt="用户头像" width="70px"; height="70px"></div>
+                    <div class="name-time">
+                        <div class="user-name">您好：{{ user.username }}</div>
+                        <div class="login-time">上次登录：{{ user.username }}</div>
+                    </div>
+                </div>
+                <div class="user-else">{{user}}我的简介</div>
+            </div>
+            <div class="side-setting">
+                <div class="side-title">用户设置</div>
+                <div class="common-info">基本资料</div>
+                <div class="change-pw"><a href="{% url 'useradmin_change_password' %}">修改密码</a></div>
+                <div class="change-email"><a href="{% url 'useradmin_change_email' %}">修改邮箱</a></div>
+                <div class="side-feedback">用户反馈</div>
+            </div>
+            <div class="side-func">
+                <div class="side-title">功能模块</div>
+                <div class="write-blog">撰写博客</div>
+                <div class="manage-blog">管理博客</div>
+                <div class="upload-file">上传文件</div>
+                <div class="manage-upload">管理上传</div>
+            </div>
+        </div>
+        <div class="info-main">
+            {% block info-main %}
+            {% endblock info-main %}
+        </div>
+    {% else %}
+    <div class="pls_login">请登录</div>
+    {% endif %}
+</div>
+{% endblock content %}
+
+    
+
