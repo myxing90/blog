@@ -25,7 +25,7 @@ SECRET_KEY = 'ah(*a$-m5=l-1ml8$$7!f#chi6ti+sa6g2ebt5c-1zxivme#j&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['blog.jancare.cn','127.0.0.1']
 
 
 # Application definition
