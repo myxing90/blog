@@ -5,5 +5,5 @@
 **4. 使用：clone 后可不做任何修改直接在本地 runserver 运行，包含 db.sqlite3 文件。注意：只有email的配置信息省略**  
 **5. 学习时练手制作，已不再维护，部分功能不全。**
 
-**博客网址**：[blog.jancare.cn](http://blog.jancare.cn)
+**博客网址**：[blog.jancare.cn](http://blog.jancare.cn)  
 **联系作者**：可通过应用中的**反馈**功能联系作者，信息会通过邮件传达
